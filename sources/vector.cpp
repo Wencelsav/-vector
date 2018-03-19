@@ -2,14 +2,14 @@
 #include <cassert>
 
 #include "vector.hpp"
-
+template <class T>
 vector_t::vector_t()
 {
 	elements_ = nullptr;
 	size_ = 0;
 	capacity_ = 0;
 }
-
+template <class T>
 vector_t::vector_t(vector_t const & other)
 {
 	elements_ = new int [other.capacity()];
@@ -19,7 +19,7 @@ vector_t::vector_t(vector_t const & other)
 	size_ = other.size();
 	capacity_ = other.capacity();
 }
-
+template <class T>
 vector_t & vector_t::operator =(vector_t const & other)
 {
 	if (this == &other) return *this;
@@ -34,7 +34,7 @@ vector_t & vector_t::operator =(vector_t const & other)
 		return *this;
 	}
 }
-
+template <class T>
 bool vector_t::operator ==(vector_t const & other) const
 {
 	if (size_ != other.size() || capacity_ != other.capacity()) {
@@ -45,22 +45,22 @@ bool vector_t::operator ==(vector_t const & other) const
 	}
 	return true;
 }
-
+template <class T>
 vector_t::~vector_t()
 {
 	delete[] elements_;
 }
-
+template <class T>
 std::size_t vector_t::size() const
 {
 	return size_;
 }
-
+template <class T>
 std::size_t vector_t::capacity() const
 {
 	return capacity_;
 }
-
+template <class T>
 void vector_t::push_back(int value)
 {
 	if (!elements_) {
@@ -91,7 +91,7 @@ void vector_t::push_back(int value)
 		}
 	}
 }
-
+template <class T>
 void vector_t::pop_back()
 {
 	if (size_ == 0) {
@@ -111,17 +111,17 @@ void vector_t::pop_back()
 		elements_ = elements;
 	}
 }
-
+template <class T>
 int & vector_t::operator [](std::size_t index)
 {
 	return elements_[index];
 }
-
+template <class T>
 int vector_t::operator [](std::size_t index) const
 {
 	return elements_[index];
 }
-
+template <class T>
 bool operator !=(vector_t const & lhs, vector_t const & rhs)
 {
 	if (rhs.size() != lhs.size()) {
