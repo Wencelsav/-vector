@@ -10,7 +10,7 @@ vector_t::vector_t()
 	capacity_ = 0;
 }
 template <class T>
-vector_t::vector_t(vector_t const & other)
+T::vector_t(vector_t const & other)
 {
 	elements_ = new int [other.capacity()];
 	for (std::size_t i = 0; i < other.size(); ++i) {
@@ -20,7 +20,7 @@ vector_t::vector_t(vector_t const & other)
 	capacity_ = other.capacity();
 }
 template <class T>
-vector_t & vector_t::operator =(vector_t const & other)
+T& T::operator =(vector_t const & other)
 {
 	if (this == &other) return *this;
 	else {
@@ -35,7 +35,7 @@ vector_t & vector_t::operator =(vector_t const & other)
 	}
 }
 template <class T>
-bool vector_t::operator ==(vector_t const & other) const
+bool T::operator ==(T const & other) const
 {
 	if (size_ != other.size() || capacity_ != other.capacity()) {
 		return false;
@@ -46,22 +46,22 @@ bool vector_t::operator ==(vector_t const & other) const
 	return true;
 }
 template <class T>
-vector_t::~vector_t()
+T::~T()
 {
 	delete[] elements_;
 }
 template <class T>
-std::size_t vector_t::size() const
+std::size_t T::size() const
 {
 	return size_;
 }
 template <class T>
-std::size_t vector_t::capacity() const
+std::size_t T::capacity() const
 {
 	return capacity_;
 }
 template <class T>
-void vector_t::push_back(int value)
+void T::push_back(int value)
 {
 	if (!elements_) {
 		size_ = 1;
@@ -92,7 +92,7 @@ void vector_t::push_back(int value)
 	}
 }
 template <class T>
-void vector_t::pop_back()
+void T::pop_back()
 {
 	if (size_ == 0) {
 		return;
@@ -112,17 +112,17 @@ void vector_t::pop_back()
 	}
 }
 template <class T>
-int & vector_t::operator [](std::size_t index)
+int & T::operator [](std::size_t index)
 {
 	return elements_[index];
 }
 template <class T>
-int vector_t::operator [](std::size_t index) const
+int T::operator [](std::size_t index) const
 {
 	return elements_[index];
 }
 template <class T>
-bool operator !=(vector_t const & lhs, vector_t const & rhs)
+bool operator !=(T const & lhs, T const & rhs)
 {
 	if (rhs.size() != lhs.size()) {
 		return true;
